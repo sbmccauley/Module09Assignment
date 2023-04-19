@@ -9,7 +9,7 @@ import { fetchEmployees } from "./modules/init.js";
 //     [14545423, "Robin Banks", 7867, "robin@vectacorp.com", "Marketing"],
 //     [13413453, "Sue Wedge", 1235, "sue@vectacorp.com", "QA"]
 // ]
-let employees = []
+// let employees = []
 
 // GET DOM ELEMENTS
 let empTable    = document.querySelector('#employees')
@@ -40,16 +40,20 @@ function buildGrid(employees) {
     // LOOP THROUGH THE ARRAY OF EMPLOYEES
 
     // REBUILDING THE ROW STRUCTURE
-    fetchEmployees()
-    // for (let employee of arrEmployees) {
+  
+    fetchEmployees().then(() => {
+   
+
+    })
+    // for (let employee of employees) {
     //     tbody.innerHTML += 
     //     `
     //     <tr>
-    //         <td>${employee[0]}</td>
-    //         <td>${employee[1]}</td>
-    //         <td>${employee[2]}</td>
-    //         <td><a href="mailto:${employee[3]}">${employee[3]}</a></td>
-    //         <td>${employee[4]}</td>
+    //         <td>${employee.id}</td>
+    //         <td>${employee.name}</td>
+    //         <td>${employee.extension}</td>
+    //         <td><a href="mailto:${employee.email}">${employee.email}</a></td>
+    //         <td>${employee.department}</td>
     //         <td><button class="btn btn-sm btn-danger delete">X</button></td>
     //     </tr>
     //     `
