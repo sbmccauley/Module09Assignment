@@ -49,6 +49,8 @@ function buildGrid(users) {
             </tr>
             `
         } 
+        // UPDATE EMPLOYEE COUNT
+    empCount.value = `(${users.length})`
     })
     // for (let employee of arrEmployees) {
     //     tbody.innerHTML += 
@@ -65,6 +67,5 @@ function buildGrid(users) {
     // }
     // BIND THE TBODY TO THE EMPLOYEE TABLE
     empTable.appendChild(tbody)
-    // UPDATE EMPLOYEE COUNT
-    // empCount.value = `(${users.length})`
+    
 }
