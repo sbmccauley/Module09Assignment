@@ -1,6 +1,3 @@
-//IMPORT MODULE
-import { fetchEmployees } from "./modules/init.js";
-
 // CREATE AN ARRAY OF EMPLOYEES
 // let arrEmployees = [
 //     [34123413, "Zak Ruvalcaba", 3424, "zak@vectacorp.com", "Executive"],
@@ -9,14 +6,13 @@ import { fetchEmployees } from "./modules/init.js";
 //     [14545423, "Robin Banks", 7867, "robin@vectacorp.com", "Marketing"],
 //     [13413453, "Sue Wedge", 1235, "sue@vectacorp.com", "QA"]
 // ]
-// let employees = []
+import { fetchUsers } from "./modules/init.js"
 
 // GET DOM ELEMENTS
 let empTable    = document.querySelector('#employees')
 let empCount    = document.querySelector('#empCount')
-
 // BUILD THE EMPLOYEES TABLE WHEN THE PAGE LOADS
-buildGrid(employees)
+buildGrid()
 
 // DELETE EMPLOYEE
 empTable.addEventListener('click', (e) => {
@@ -32,28 +28,37 @@ empTable.addEventListener('click', (e) => {
 })
 
 // BUILD THE EMPLOYEES GRID
-function buildGrid(employees) {
+function buildGrid(users) {
     // REMOVE THE EXISTING SET OF ROWS BY REMOVING THE ENTIRE TBODY SECTION
     empTable.lastElementChild.remove()
     // REBUILD THE TBODY FROM SCRATCH
     let tbody = document.createElement('tbody')
     // LOOP THROUGH THE ARRAY OF EMPLOYEES
-
     // REBUILDING THE ROW STRUCTURE
-  
-    fetchEmployees().then(() => {
-   
-
+    fetchUsers().then( users => {
+        for (let user of users) {
+            tbody.innerHTML += 
+            `
+            <tr>
+                <td>${user.id}</td>
+                <td>${user.name}</td>
+                <td>${user.extension}</td>
+                <td><a href="mailto:${user.email}">${user.email}</a></td>
+                <td>${user.department}</td>
+                <td><button class="btn btn-sm btn-danger delete">X</button></td>
+            </tr>
+            `
+        } 
     })
-    // for (let employee of employees) {
+    // for (let employee of arrEmployees) {
     //     tbody.innerHTML += 
     //     `
     //     <tr>
-    //         <td>${employee.id}</td>
-    //         <td>${employee.name}</td>
-    //         <td>${employee.extension}</td>
-    //         <td><a href="mailto:${employee.email}">${employee.email}</a></td>
-    //         <td>${employee.department}</td>
+    //         <td>${employee[0]}</td>
+    //         <td>${employee[1]}</td>
+    //         <td>${employee[2]}</td>
+    //         <td><a href="mailto:${employee[3]}">${employee[3]}</a></td>
+    //         <td>${employee[4]}</td>
     //         <td><button class="btn btn-sm btn-danger delete">X</button></td>
     //     </tr>
     //     `
@@ -61,5 +66,5 @@ function buildGrid(employees) {
     // BIND THE TBODY TO THE EMPLOYEE TABLE
     empTable.appendChild(tbody)
     // UPDATE EMPLOYEE COUNT
-    empCount.value = `(${employees.length})`
+    // empCount.value = `(${users.length})`
 }

@@ -1,27 +1,27 @@
-async function fetchEmployees() {
+async function fetchUsers() {
     try {
         const response = await fetch('/data/employees.json'); 
-       
-        const employees = await response.json();
-        console.log(`This is ${employees}`)
-        for (let employee of employees) {
-            tbody.innerHTML += 
-            `
-            <tr>
-                <td>${employee.id}</td>
-                <td>${employee.name}</td>
-                <td>${employee.extension}</td>
-                <td><a href="mailto:${employee.email}">${employee.email}</a></td>
-                <td>${employee.department}</td>
-                <td><button class="btn btn-sm btn-danger delete">X</button></td>
-            </tr>
-            `
-        } 
+        const users = await response.json();
+        console.log(`this is ${users}`)
+        return users['employees']
+        // for (let user of users) {
+        //     tbody.innerHTML += 
+        //     `
+        //     <tr>
+        //         <td>${user.id}</td>
+        //         <td>${user.name}</td>
+        //         <td>${user.extension}</td>
+        //         <td><a href="mailto:${user.email}">${user.employee}</a></td>
+        //         <td>${user.department}</td>
+        //         <td><button class="btn btn-sm btn-danger delete">X</button></td>
+        //     </tr>
+        //     `
+        // } 
     } catch (error) {
         console.error(error);
     }
 
 }
-// fetchEmployees().then();
+fetchUsers();
 
-export {fetchEmployees}
+export {fetchUsers}
