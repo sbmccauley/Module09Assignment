@@ -1,11 +1,4 @@
-// CREATE AN ARRAY OF EMPLOYEES
-// let arrEmployees = [
-//     [34123413, "Zak Ruvalcaba", 3424, "zak@vectacorp.com", "Executive"],
-//     [23424665, "Sally Smith", 2344, "sally@vectacorp.com", "Administrative"],
-//     [12341244, "Mark Martin", 5352, "mark@vectacorp.com", "Sales"],
-//     [14545423, "Robin Banks", 7867, "robin@vectacorp.com", "Marketing"],
-//     [13413453, "Sue Wedge", 1235, "sue@vectacorp.com", "QA"]
-// ]
+
 import { fetchUsers } from "./modules/init.js"
 
 // GET DOM ELEMENTS
@@ -52,19 +45,7 @@ function buildGrid(users) {
         // UPDATE EMPLOYEE COUNT
     empCount.value = `(${users.length})`
     })
-    // for (let employee of arrEmployees) {
-    //     tbody.innerHTML += 
-    //     `
-    //     <tr>
-    //         <td>${employee[0]}</td>
-    //         <td>${employee[1]}</td>
-    //         <td>${employee[2]}</td>
-    //         <td><a href="mailto:${employee[3]}">${employee[3]}</a></td>
-    //         <td>${employee[4]}</td>
-    //         <td><button class="btn btn-sm btn-danger delete">X</button></td>
-    //     </tr>
-    //     `
-    // }
+   
     // BIND THE TBODY TO THE EMPLOYEE TABLE
     empTable.appendChild(tbody)
     
